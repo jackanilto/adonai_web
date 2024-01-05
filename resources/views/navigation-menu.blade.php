@@ -12,9 +12,18 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Painel de Controle') }}
-                    </x-nav-link>
+                <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <button class="px-3 py-2 bg-blue-500 text-black rounded-md">
+                        Painel de Controle
+                    </button>
+                </x-nav-link>
+
+                <!-- Botão para Cadastro de Membros -->
+                <x-nav-link href="{{ route('membros.create') }}" :active="request()->routeIs('membros.create')">
+                    <button class="px-3 py-2 bg-blue-500 text-black rounded-md">
+                        Cadastro de Membros
+                    </button>
+                </x-nav-link>
                 </div>
             </div>
 
@@ -95,11 +104,11 @@
                         <x-slot name="content">
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
+                                {{ __('Gerenciar Conta') }}
                             </div>
 
                             <x-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                                {{ __('Perfil') }}
                             </x-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -116,7 +125,7 @@
 
                                 <x-dropdown-link href="{{ route('logout') }}"
                                          @click.prevent="$root.submit();">
-                                    {{ __('Log Out') }}
+                                    {{ __('Sair') }}
                                 </x-dropdown-link>
                             </form>
                         </x-slot>

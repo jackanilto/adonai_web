@@ -32,6 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/cadastro-membro', [MembroController::class, 'create']);
     Route::post('/cadastro-membro', [MembroController::class, 'store']);
     Route::post('/membros', [MembroController::class, 'store'])->name('membros.store');
+    Route::get('/cadastro-membros', [MembroController::class, 'create'])->name('membros.create');
+
 
 });
 
