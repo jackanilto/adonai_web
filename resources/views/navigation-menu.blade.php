@@ -24,6 +24,13 @@
                         Cadastro de Membros
                     </button>
                 </x-nav-link>
+
+                <!-- Botão para Vizualização de Membros -->
+                <x-nav-link href="{{ route('membros.index') }}" :active="request()->routeIs('membros.create')">
+                    <button class="px-3 py-2 bg-blue-500 text-black rounded-md">
+                        Membros
+                    </button>
+                </x-nav-link>
                 </div>
             </div>
 

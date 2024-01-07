@@ -32,7 +32,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/cadastro-membro', [MembroController::class, 'create']);
     Route::post('/cadastro-membro', [MembroController::class, 'store']);
     Route::post('/membros', [MembroController::class, 'store'])->name('membros.store');
+    /*Rota para a pagina de cadastro de membros cadastrados */
     Route::get('/cadastro-membros', [MembroController::class, 'create'])->name('membros.create');
+    /*Rota para a pagina de vizualização de membros cadastrados */
+    Route::get('/membros', [MembroController::class, 'index'])->name('membros.index');
+    /* Rota para a exibição individual de membros */
+    Route::get('/membros/{membro}', [MembroController::class, 'show'])->name('membros.show');
+
 
 
 });
