@@ -8,17 +8,33 @@ use App\Models\Membro;
 
 class MembroController extends Controller
 {
+    /*Create */
     public function create()
     {
         return view('membros.create');
     }
 
+    /* Edite */
+    public function edit($id)
+    {
+        $membro = Membro::find($id);
+
+        if (!$membro) {
+            // Adicione um tratamento para o caso do membro não ser encontrado
+            return redirect()->route('membros.index')->with('error', 'Membro não encontrado.');
+        }
+
+        return view('membros.edit', compact('membro'));
+    }
+
+    /* Pagina de Membros cadastrados */
     public function index()
     {
         $membros = Membro::all();
         return view('membros.index', compact('membros'));
     }
 
+    /* Vizualizar detalhes do membro */
     public function show($id)
     {
         $membro = Membro::find($id);
@@ -149,5 +165,55 @@ class MembroController extends Controller
 
         // Redireciona de volta à página de cadastro com uma mensagem de sucesso
         return redirect('/cadastro-membro')->with('success', 'Membro cadastrado com sucesso!');
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validação dos dados do formulário
+        $request->validate([
+            'roll' => 'required|max:10',
+            'nome' => 'required|max:200',
+            'endereco' => 'nullable|max:255',
+            'numero' => 'nullable|max:10',
+            'bairro' => 'nullable|max:100',
+            'imagem' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        try {
+            // Encontrar o membro pelo ID
+            $membro = Membro::findOrFail($id);
+
+            // Lida com o upload da nova imagem, se existir
+            if ($request->hasFile('imagem')) {
+                // Remove a imagem antiga se existir
+                if ($membro->imagem) {
+                    $caminhoImagemAntiga = public_path($membro->imagem);
+                    if (File::exists($caminhoImagemAntiga)) {
+                        File::delete($caminhoImagemAntiga);
+                    }
+                }
+
+                // Adiciona a nova imagem
+                $novaImagem = $request->file('imagem');
+                $nomeNovaImagem = time() . '.' . $novaImagem->getClientOriginalExtension();
+                $caminhoNovaImagem = public_path('membro_imagens/');
+                $novaImagem->move($caminhoNovaImagem, $nomeNovaImagem);
+                $caminhoCompletoNovaImagem = 'membro_imagens/' . $nomeNovaImagem;
+
+                // Atualiza o caminho da imagem no banco de dados
+                $membro->update(['imagem' => $caminhoCompletoNovaImagem]);
+            }
+
+            // Atualizar os campos do membro com os dados do formulário
+            $membro->update($request->except(['imagem']));
+
+            // Redirecionar para a página de visualização ou qualquer outra ação após a atualização
+            return redirect()->route('membros.show', $membro->id)
+                             ->with('success', 'Membro atualizado com sucesso');
+        } catch (\Exception $e) {
+            // Lidar com exceções, se necessário
+            return redirect()->route('membros.index')
+                             ->with('error', 'Erro ao atualizar o membro.');
+        }
     }
 }

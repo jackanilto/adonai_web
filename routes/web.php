@@ -38,6 +38,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/membros', [MembroController::class, 'index'])->name('membros.index');
     /* Rota para a exibição individual de membros */
     Route::get('/membros/{membro}', [MembroController::class, 'show'])->name('membros.show');
+    /* Rota para Editar membros */
+    Route::get('/membros/{id}/edit', [MembroController::class, 'edit'])->name('membros.edit');
+    /* Rota para Deletar membros */
+    Route::delete('/membros/{id}', [MembroController::class, 'destroy'])->name('membros.destroy')
+    /* Rota para Editar membros */;
+    Route::resource('membros', MembroController::class);
+
 
 
 

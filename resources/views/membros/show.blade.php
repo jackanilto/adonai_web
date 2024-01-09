@@ -17,11 +17,13 @@
                         <div>
                             <!-- Exibição da imagem -->
                             @if ($membro->imagem)
-                                <img src="{{ asset($membro->imagem) }}" alt="Imagem do Membro" class="mt-4 max-w-full">
+                                <img src="{{ asset($membro->imagem) }}" alt="Imagem do Membro" class="mt-4 max-w-full" style="width: 100px;">
                             @else
-                                <p class="mt-4">Sem imagem disponível</p>
+                                <!-- Usar uma imagem padrão quando não houver imagem -->
+                                <img src="{{ asset('imagens/user-sem-foto.png') }}" alt="Imagem Padrão" class="mt-4 max-w-full" style="width: 100px;">
                             @endif
                         </div>
+                    </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <p><strong>Roll:</strong> {{ $membro->roll }}</p>
                             <!-- <p><strong>Nome:</strong> {{ $membro->nome }}</p> -->

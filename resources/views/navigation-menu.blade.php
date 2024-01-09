@@ -13,21 +13,21 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                 <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                    <button class="px-3 py-2 bg-blue-500 text-black rounded-md">
+                    <button class="px-3 py-2 bg-blue-500 text-white rounded-md">
                         Painel de Controle
                     </button>
                 </x-nav-link>
 
                 <!-- Botão para Cadastro de Membros -->
                 <x-nav-link href="{{ route('membros.create') }}" :active="request()->routeIs('membros.create')">
-                    <button class="px-3 py-2 bg-blue-500 text-black rounded-md">
+                    <button class="px-3 py-2 bg-blue-500 text-white rounded-md">
                         Cadastro de Membros
                     </button>
                 </x-nav-link>
 
                 <!-- Botão para Vizualização de Membros -->
                 <x-nav-link href="{{ route('membros.index') }}" :active="request()->routeIs('membros.create')">
-                    <button class="px-3 py-2 bg-blue-500 text-black rounded-md">
+                    <button class="px-3 py-2 bg-blue-500 text-white rounded-md">
                         Membros
                     </button>
                 </x-nav-link>
