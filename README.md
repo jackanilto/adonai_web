@@ -65,8 +65,9 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-<details>
 
+## Documentação:
+<details>
 <summary>## Documentação: Criação da Tabela TBL_TRATAMENTOS</summary>
 Objetivo
 O objetivo desta documentação é guiar na criação da tabela TBL_TRATAMENTOS em um aplicativo Laravel usando migrations.
