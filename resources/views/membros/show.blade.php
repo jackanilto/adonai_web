@@ -8,7 +8,15 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
-                <div>
+                <div> 
+                    <!-- Botão de Voltar -->
+                        <x-nav-link href="{{ route('membros.index') }}" :active="request()->routeIs('membros.create')">
+                            <button class="px-3 py-2 bg-blue-500 text-white rounded-md">
+                                  Voltar      
+                            </button>
+                        </x-nav-link>
+
+
                     <h2 class="text-2xl font-semibold mb-4">
                             <p><strong>Nome:</strong> {{ $membro->nome }}</p>
                     </h2>
@@ -81,9 +89,7 @@
 
                     </div>
 
-                    <!-- Botão de Voltar -->
-                    <a href="{{ route('membros.index') }}" class="mt-4 text-blue-500">Voltar</a>
-                </div>
+                   </div>
             </div>
         </div>
     </div>

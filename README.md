@@ -64,3 +64,64 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+<details>
+
+<summary>## Documentação: Criação da Tabela TBL_TRATAMENTOS</summary>
+Objetivo
+O objetivo desta documentação é guiar na criação da tabela TBL_TRATAMENTOS em um aplicativo Laravel usando migrations.
+
+Pré-requisitos
+Certifique-se de ter o ambiente Laravel configurado corretamente e um banco de dados configurado no arquivo .env.
+
+Passos
+1. Criação da Migration
+Abra o terminal e execute o seguinte comando para criar uma nova migration:
+
+```ruby
+php artisan make:migration create_tbl_tratamentos_table
+```
+
+
+Este comando criará um novo arquivo de migration no diretório database/migrations.
+
+2. Edição da Migration
+Abra o arquivo de migration recém-criado (geralmente localizado em database/migrations) e adicione o seguinte código para definir a estrutura da tabela TBL_TRATAMENTOS:
+
+```ruby
+php
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateTblTratamentosTable extends Migration
+{
+    public function up()
+    {
+        Schema::create('tbl_tratamentos', function (Blueprint $table) {
+            $table->id();
+            $table->string('tratamento', 50);
+            $table->timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('tbl_tratamentos');
+    }
+}
+
+```
+
+3. Aplicação da Migration
+Execute o seguinte comando para aplicar as alterações no banco de dados:
+
+```ruby
+php artisan migrate
+```
+
+Este comando criará a tabela TBL_TRATAMENTOS no banco de dados configurado no arquivo .env.
+
+Conclusão
+A tabela TBL_TRATAMENTOS foi criada com sucesso. Agora você pode usar esta tabela em seu aplicativo Laravel para armazenar tratamentos.
+</details>
