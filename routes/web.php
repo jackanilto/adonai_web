@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 /* Cadastro de membros */
 use App\Http\Controllers\MembroController;
+/* Cadastro de Tratamentos */
+use App\Http\Controllers\TratamentoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +46,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/membros/{id}', [MembroController::class, 'destroy'])->name('membros.destroy')
     /* Rota para Editar membros */;
     Route::resource('membros', MembroController::class);
+    /* Rota para cadastro tratamentos */
+    Route::resource('tratamentos', TratamentoController::class);
 
 
 

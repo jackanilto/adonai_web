@@ -68,7 +68,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Documentação:
 <details>
-<summary>## Documentação: Criação da Tabela TBL_TRATAMENTOS</summary>
+<summary>Criação da Tabela TBL_TRATAMENTOS</summary>
 Objetivo
 O objetivo desta documentação é guiar na criação da tabela TBL_TRATAMENTOS em um aplicativo Laravel usando migrations.
 
@@ -125,4 +125,73 @@ Este comando criará a tabela TBL_TRATAMENTOS no banco de dados configurado no a
 
 Conclusão
 A tabela TBL_TRATAMENTOS foi criada com sucesso. Agora você pode usar esta tabela em seu aplicativo Laravel para armazenar tratamentos.
+</details>
+
+
+
+
+
+
+
+## Documentação:
+<details>
+<summary>Criação da View para Cadastro de Tratamentos</summary>
+
+Objetivo
+O objetivo desta documentação é guiar na criação da view para o cadastro de tratamentos na tabela TBL_TRATAMENTOS em um aplicativo Laravel.
+
+Passos
+1. Criação do Controller
+Se ainda não tiver um controller para os tratamentos, crie um usando o seguinte comando:
+
+```ruby
+php artisan make:controller TratamentoController
+```
+
+Abra o arquivo gerado em app/Http/Controllers/TratamentoController.php e adicione os métodos necessários para o cadastro.
+
+2. Criação da Rota
+Abra o arquivo de rotas em routes/web.php e adicione a rota para o cadastro de tratamentos:
+
+
+```ruby
+php
+use App\Http\Controllers\TratamentoController;
+
+Route::resource('tratamentos', TratamentoController::class);
+```
+
+
+3. Criação da View
+Crie uma nova view para o cadastro de tratamentos em resources/views/tratamentos/create.blade.php. Você pode usar o seguinte código como ponto de partida:
+
+
+```ruby
+html
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <h2>Cadastrar Tratamento</h2>
+        <form action="{{ route('tratamentos.store') }}" method="post">
+            @csrf
+            <div class="form-group">
+                <label for="tratamento">Tratamento:</label>
+                <input type="text" name="tratamento" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+@endsection
+```
+
+4. Ajustes no Controller
+No método store do TratamentoController, adicione o código necessário para salvar os tratamentos no banco de dados.
+
+5. Adição de Links
+Adicione links na sua aplicação para acessar a página de cadastro de tratamentos, por exemplo, na barra de navegação.
+
+Conclusão
+Agora você tem uma view para o cadastro de tratamentos. Acesse a página e teste o processo de cadastro.
+
 </details>

@@ -14,7 +14,7 @@ class MembroController extends Controller
         return view('membros.create');
     }
 
-    /* Edite */
+    /* Edit */
     public function edit($id)
     {
         $membro = Membro::find($id);
